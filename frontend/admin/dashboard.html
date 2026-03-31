@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LMS Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+<div class="admin-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>LMS Admin</h2>
+        <ul>
+            <li onclick="showSection('dashboard')">Dashboard</li>
+            <li onclick="showSection('addCourse')">Add Course</li>
+            <li onclick="showSection('manageCourses'); loadCourses();">
+                Manage Courses
+            </li>
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- Dashboard Section -->
+        <div id="dashboard" class="section">
+            <h1>Welcome Admin 👋</h1>
+            <p>Total Courses: <span id="courseCount">0</span></p>
+        </div>
+
+        <!-- Add Course Section -->
+        <div id="addCourse" class="section" style="display:none;">
+            <h1>Add New Course</h1>
+
+            <input type="text" id="title" placeholder="Course Title"><br><br>
+
+            <textarea id="description" placeholder="Course Description"></textarea><br><br>
+
+            <input type="text" id="videoUrl" placeholder="YouTube Video URL"><br><br>
+
+            <button onclick="addCourse()">Add Course</button>
+        </div>
+
+        <!-- Manage Courses Section -->
+        <div id="manageCourses" class="section" style="display:none;">
+            <h1>All Courses</h1>
+            <div id="courseList"></div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+<script src="./admin.js"></script>
+
+</body>
+</html>
+

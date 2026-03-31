@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Course Player</title>
+
+<style>
+body{
+  font-family:Arial;
+  background:#f4f6fb;
+  margin:0;
+}
+
+.navbar{
+  background:#1e293b;
+  color:white;
+  padding:15px 30px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.container{
+  padding:40px;
+  text-align:center;
+}
+
+iframe{
+  width:70%;
+  height:400px;
+  border:none;
+  border-radius:10px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>LMS</h2>
+  <a href="mycourses.html" style="color:white;">Back</a>
+</div>
+
+<div class="container">
+  <h1 id="courseTitle"></h1>
+
+  <iframe id="videoPlayer" width="800" height="450"></iframe>
+
+  <!-- ✅ Progress Bar -->
+  <div style="width:70%; margin:auto; margin-top:20px;">
+    <div style="background:#ddd; height:20px; border-radius:10px;">
+      <div id="progressBar" style="height:20px; width:0%; background:green; border-radius:10px;"></div>
+    </div>
+  </div>
+
+  <!-- ✅ Certificate Button -->
+  <button id="certificateBtn" style="display:none; margin-top:20px;">
+    Download Certificate
+  </button>
+
+</div>
+
+<!-- ✅ YouTube API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script>
+
+let player;
+let interval;
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+const params = new URLSearchParams(window.location.search);
+const courseId = params.get("id");
+
+// 🔥 Course fetch
+fetch(`http://localhost:5000/api/courses/${courseId}`)
+.then(res => res.json())
+.then(course => {
+
+    document.getElementById("courseTitle").innerText = course.title;
+
+    /*const videoId = extractYouTubeId(course.videoUrl);
+
+    document.getElementById("videoPlayer").src =
+      `https://www.youtube.com/embed/${videoId}?enablejsapi=1`;*/
+
+      document.getElementById("videoPlayer").src =
+  course.videoUrl + "?enablejsapi=1";
+  
+});
+
+// 🔥 YouTube Player
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('videoPlayer', {
+        events: {
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+// 🔥 Track progress
+function onPlayerStateChange(event) {
+
+    if (event.data == YT.PlayerState.PLAYING) {
+
+        interval = setInterval(() => {
+
+            const current = player.getCurrentTime();
+            const duration = player.getDuration();
+
+            const progress = (current / duration) * 100;
+
+            console.log("Progress:", progress);
+
+            // ✅ UI update
+            document.getElementById("progressBar").style.width = progress + "%";
+
+            // ✅ Backend save
+            fetch("http://localhost:5000/api/enrollments/progress", {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    studentId: user._id,
+                    courseId: courseId,
+                    progress: progress
+                })
+            });
+
+            // ✅ Certificate unlock
+            if(progress >= 90){
+                document.getElementById("certificateBtn").style.display = "block";
+            }
+
+        }, 5000);
+
+    } else {
+        clearInterval(interval);
+    }
+}
+
+// 🔥 Extract YouTube ID
+function extractYouTubeId(url) {
+    const regExp = /(?:youtube\.com.*(?:\?|&)v=|youtu\.be\/)([^&]+)/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+}
+
+// 🔥 Certificate download
+document.getElementById("certificateBtn").addEventListener("click", () => {
+
+  const content = `
+Certificate of Completion
+
+This certifies that ${user.name}
+has successfully completed the course.
+`;
+
+  const blob = new Blob([content], { type: "text/plain" });
+  const link = document.createElement("a");
+
+  link.href = URL.createObjectURL(blob);
+  link.download = "certificate.txt";
+  link.click();
+
+});
+
+</script>
+
+</body>
+</html>

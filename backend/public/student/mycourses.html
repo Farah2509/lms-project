@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>My Courses</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6fb;
+margin:0;
+}
+
+.navbar{
+background:#2c3e50;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+.header{
+text-align:center;
+margin-top:30px;
+font-size:28px;
+}
+
+.container{
+padding:30px;
+}
+
+.course-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:25px;
+margin-top:30px;
+}
+
+.course-card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.course-card h3{
+margin-bottom:10px;
+}
+
+.course-card p{
+color:#555;
+}
+
+.watch-btn{
+margin-top:15px;
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.watch-btn:hover{
+background:#1d4ed8;
+}
+.title{
+text-align:center;
+margin-top:40px;
+font-size:32px;
+}
+
+.course-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+padding:40px;
+}
+
+.course-card{
+background:white;
+padding:25px;
+border-radius:12px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.3s;
+}
+
+.course-card:hover{
+transform:translateY(-5px);
+}
+
+.watch-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 16px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+
+.watch-btn:hover{
+background:#1e40af;
+}
+.watch-btn{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+font-size:14px;
+}
+
+.watch-btn:hover{
+background:#1e40af;
+}
+.progress-bar{
+width:100%;
+height:8px;
+background:#ddd;
+border-radius:5px;
+margin:10px 0;
+}
+
+.progress{
+height:100%;
+background:#22c55e;
+border-radius:5px;
+}
+
+.badge{
+font-size:13px;
+color:#16a34a;
+font-weight:bold;
+margin-bottom:8px;
+}
+.continue-btn{
+background:#22c55e;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:6px;
+cursor:pointer;
+margin-top:10px;
+}
+.course-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+padding:20px;
+}
+
+.course-card{
+background:white;
+border-radius:10px;
+padding:15px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.course-img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+}
+.course-card {
+  width: 300px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.course-card img {
+  width: 100%;
+  height: 150px;   /* 👈 important */
+  object-fit: cover;
+  border-radius: 8px;
+}
+.course-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.course-card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+  max-width: 350px;
+  margin: auto;
+}
+
+.course-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.continue-btn {
+  background: #22c55e;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div class="navbar">
+
+<h2>LMS</h2>
+
+<a href="courses.html">Courses</a>
+<button class="continue-btn">Continue Learning</button>
+</div>
+
+
+<h1 class="title">My Enrolled Courses</h1>
+
+<div id="courseContainer" class="course-grid"></div>
+<div id="myCoursesContainer" class="course-grid"></div>
+
+<script src="../mycourses.js"></script>
+
+</body>
+
+</html>

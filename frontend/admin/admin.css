@@ -1,0 +1,47 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.admin-container {
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    background: #1e293b;
+    color: white;
+    height: 100vh;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    margin: 8px 0;
+    background: #334155;
+    border-radius: 6px;
+}
+
+.sidebar li:hover {
+    background: #475569;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+.section input, textarea {
+    width: 300px;
+    padding: 8px;
+}
+
+

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard - LMS</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f1f5f9;
+}
+
+/* Navbar */
+
+.navbar{
+background:#1e293b;
+color:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 40px;
+}
+
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-weight:500;
+}
+
+.navbar a:hover{
+text-decoration:underline;
+}
+
+/* Header */
+
+header{
+text-align:center;
+margin-top:40px;
+}
+
+/* Dashboard Card */
+
+.login-box{
+width:400px;
+margin:40px auto;
+background:white;
+padding:40px;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+button{
+background:#4f46e5;
+border:none;
+padding:12px 20px;
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-size:15px;
+}
+
+button:hover{
+background:#4338ca;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<script>
+const user = localStorage.getItem("user");
+
+if(!user){
+alert("Please login first");
+window.location.href = "../login.html";
+}
+</script>
+
+<div class="navbar">
+
+<h2>🎓 LMS</h2>
+
+<div>
+<a href="dashboard.html">Dashboard</a>
+<a href="courses.html">Courses</a>
+<a href="mycourses.html">My Courses</a>
+<a href="../profile.html">My Profile</a>
+<a href="#" onclick="logout()">Logout</a>
+</div>
+
+</div>
+
+<header>
+<h1>LMS Dashboard</h1>
+</header>
+
+<section class="login-box">
+
+<h2 id="welcomeText">Welcome 👋</h2>
+
+<p>You are successfully logged in.</p>
+
+<br>
+
+<button onclick="goProfile()">My Profile</button>
+
+</section>
+
+<script>
+
+const userData = JSON.parse(localStorage.getItem("user"));
+
+if(userData){
+document.getElementById("welcomeText").innerText =
+"Welcome, " + userData.name + " 👋";
+}
+
+function goProfile(){
+window.location.href = "../profile.html";
+}
+
+function logout(){
+localStorage.removeItem("user");
+window.location.href = "../login.html";
+}
+
+</script>
+
+</body>
+</html>
+```

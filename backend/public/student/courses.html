@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Available Courses</title>
+<!-- <img src="https://via.placeholder.com/300x150" class="course-img"> -->
+<style>
+
+/* NAVBAR */
+.navbar{
+  background: linear-gradient(135deg,#0f172a,#1e3a8a);
+  color:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.navbar a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+}
+.navbar a:hover{
+  color:#60a5fa;}
+
+.logout-btn{
+background:#ef4444;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+color:white;
+cursor:pointer;
+}
+
+/* SEARCH */
+#searchCourse{
+width:60%;
+padding:10px;
+border-radius:6px;
+border:1px solid #ccc;
+margin:30px auto;
+display:block;
+}
+
+/* GRID */
+.course-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+padding:30px;
+}
+
+/* CARD */
+.course-card{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.course-img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:12px;
+}
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:10px 15px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#1d4ed8;
+}
+.course-card{
+width:300px;
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.course-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:8px;
+}
+.search-box{
+width:60%;
+margin:20px auto;
+}
+
+.search-box input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+font-size:16px;
+}
+/* BODY */
+body{
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #eef2f7, #f8fafc);
+  margin:0;
+}
+
+/* NAVBAR */
+.navbar{
+  margin:0;
+  background: linear-gradient(135deg,#1e293b,#0f172a);
+  color:white;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  position:sticky;
+  top:0;
+  z-index:1000;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:500;
+}
+
+/* TITLE */
+h2{
+  text-align:center;
+  margin-top:30px;
+  font-size:30px;
+  font-weight:600;
+  color:#0f172a;
+  position:relative;
+}
+h2::after{
+  content:"";
+  width:60px;
+  height:3px;
+  background:#2563eb;
+  display:block;
+  margin:10px auto;
+  border-radius:10px;
+}
+
+/* SEARCH */
+#searchCourse{
+  width:50%;
+  padding:12px 15px;
+  border-radius:10px;
+  border:1px solid #cbd5e1;
+  display:block;
+  margin:25px auto;
+  font-size:15px;
+  outline:none;
+  transition:0.3s;
+}
+#searchCourse:focus{
+  border-color:#2563eb;
+  box-shadow:0 0 8px rgba(37,99,235,0.2);
+}
+
+/* GRID */
+.course-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:35px; /* thoda bada gap */
+  padding:50px;
+}
+
+/* CARD */
+.course-card::before{
+  position:absolute;
+  top:10px;
+  left:10px;
+  background: linear-gradient(135deg,#22c55e,#16a34a);
+  color:white;
+  padding:4px 10px;
+  border-radius:10px;
+  font-size:12px;
+  font-weight:500;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  text-align:center;
+  transition:all 0.3s ease;
+  overflow:hidden;
+  backdrop-filter: blur(10px);
+  border:1px solid rgba(0,0,0,0.05);
+}
+
+.course-card:hover{
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* COURSE TITLE */
+.course-card h3{
+  font-size:20px;
+  color:#0f172a;
+  margin-bottom:8px;
+}
+
+/* DESCRIPTION */
+.course-card p{
+  color:#64748b;
+  font-size:14px;
+  margin-bottom:15px;
+}
+/*button*/
+.course-card button{
+  background: linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.course-card button:hover{
+  background:#1e40af;
+}
+
+/* OPTIONAL TAG */
+.course-card::before{
+  position:absolute;
+  top:10px;
+  left:-20px;
+  background:#22c55e;
+  color:white;
+  padding:4px 25px;
+  transform:rotate(-45deg);
+  font-size:12px;
+}
+.course-img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+/* ENROLLED BUTTON */
+button:disabled{
+  background:#94a3b8;
+  cursor:not-allowed;
+}
+
+/* BADGE */
+.course-card::before{
+  content:"Beginner";
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#22c55e;
+  color:white;
+  padding:4px 10px;
+  border-radius:6px;
+  font-size:12px;
+}
+.course-card button{
+  background: linear-gradient(135deg,#2563eb,#1e40af);
+  padding:10px 22px;
+  border-radius:12px;
+  font-size:14px;
+}
+
+.course-card button:hover{
+  transform:scale(1.05);
+}
+button:disabled{
+  background: linear-gradient(135deg,#94a3b8,#64748b);
+  opacity:0.8;
+}
+.course-img{
+  width:100%;
+  height:160px;
+  border-radius:10px;
+  object-fit:cover;
+  margin-bottom:10px;
+}
+button{
+  background: linear-gradient(135deg,#2563eb,#1e40af);
+  border-radius:10px;
+}
+.course-card:hover .course-img{
+  transform:scale(1.05);
+  transition:0.3s;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+  <h2>LMS</h2>
+
+  <div id="welcomeUser"></div>
+
+  <div>
+    <a href="courses.html">Courses</a>
+    <a href="mycourses.html">My Courses</a>
+    <a href="../profile.html">My Profile</a>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
+</div>
+
+<h2 style="text-align:center;">All Available Courses</h2>
+
+<input type="text" id="searchCourse" placeholder="Search courses..." />
+
+<div id="courseContainer" class="course-grid"></div>
+
+<script>
+
+// ✅ USER SHOW
+const user = JSON.parse(localStorage.getItem("user"));
+
+if(user){
+  document.getElementById("welcomeUser").innerText =
+  "Welcome, " + user.name;
+}
+
+// ✅ LOGOUT
+function logout(){
+  localStorage.removeItem("user");
+  window.location.href = "/login.html";
+}
+
+// ✅ ENROLL FUNCTION
+async function enrollCourse(courseId) {
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) {
+    alert("Login first");
+    return;
+  }
+
+  console.log("Sending:", user._id, courseId);
+
+  try {
+    const res = await fetch("http://localhost:5000/api/enrollments", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        studentId: user._id,
+        courseId: courseId
+      })
+    });
+
+    const data = await res.json();
+
+    console.log("Response:", data);
+
+    alert(data.message);
+
+  } catch (err) {
+    console.log(err);
+    alert("Server error ❌");
+  }
+}
+
+// ✅ LOAD COURSES
+document.addEventListener("DOMContentLoaded", async () => {
+
+  const container = document.getElementById("courseContainer");
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if(!user){
+    alert("Login first");
+    window.location.href = "/login.html";
+    return;
+  }
+
+  try {
+
+    // 🔥 STEP 1: fetch all courses
+    const courseRes = await fetch("http://localhost:5000/api/courses");
+    const courses = await courseRes.json();
+
+    // 🔥 STEP 2: fetch enrolled courses
+    const enrollRes = await fetch(`http://localhost:5000/api/enrollments/${user._id}`);
+    const enrolledCourses = await enrollRes.json();
+
+    console.log("Enrolled:", enrolledCourses);
+
+    // 🔥 STEP 3: enrolled course IDs nikal lo
+    const enrolledIds = enrolledCourses.map(c => c._id);
+
+    container.innerHTML = "";
+
+    courses.forEach(course => {
+
+      const isEnrolled = enrolledIds.includes(course._id);
+
+      const div = document.createElement("div");
+      div.classList.add("course-card");
+
+      div.innerHTML = `
+        <img src="${course.imageUrl}" class="course-img">
+        <h3>${course.title}</h3>
+        <p>${course.description}</p>
+
+        ${
+          isEnrolled
+          ? `<button disabled style="background:gray;">Already Enrolled</button>`
+          : `<button onclick="enrollCourse('${course._id}')">Enroll</button>`
+        }
+      `;
+
+      container.appendChild(div);
+    });
+
+  } catch (err) {
+    console.log(err);
+    container.innerHTML = "<p>Error loading courses</p>";
+  }
+
+});
+</script>
+
+</body>
+</html>

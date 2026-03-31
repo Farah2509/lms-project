@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Courses</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <h2>LMS Admin</h2>
+  <ul>
+    <li><a href="dashboard.html">Dashboard</a></li>
+    <li><a href="courses.html">Manage Courses</a></li>
+    <li><a href="../login.html">Logout</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <h1>Manage Courses 📚</h1>
+
+  <!-- Add Course -->
+  <form id="courseForm">
+    <input type="text" id="title" placeholder="Course Title" required>
+    <input type="text" id="instructor" placeholder="Instructor" required>
+    <input type="text" id="duration" placeholder="Duration" required>
+    <button type="submit">Add Course</button>
+  </form>
+
+  <!-- Course List -->
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Duration</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody id="courseList"></tbody>
+  </table>
+
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
